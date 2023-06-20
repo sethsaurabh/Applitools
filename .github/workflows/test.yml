@@ -1,0 +1,51 @@
+name: Run all tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Check out project
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Authenticate with Google Cloud
+        uses: google-github-actions/auth@v1
+        with:
+          credentials: ${{ secrets.GCP_SA_KEY }}
+  
+      - name: Retrieve secret from Google Secret Manager
+        id: get-secret
+        uses: google-github-actions/get-secretmanager-secrets@v1
+        with:
+            secrets: |
+              applitools_api_key:projects/370696467361/secrets/applitools_api_key/versions/1
+
+      - name: Clean install the project
+        run: npm ci
+
+      - name: Install Playwright
+        run: npx playwright install --with-deps
+
+      - name: Run Playwright tests
+        run: npm test
+        env:
+          APPLITOOLS_API_KEY: ${{ steps.get-secret.outputs.APPLITOOLS_API_KEY }}
+
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
