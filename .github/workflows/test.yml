@@ -40,12 +40,15 @@ jobs:
 
       - name: Set to use XVfb
         run:  xvfb-run npx playwright test
-
-      - name: Run Playwright tests
-        run: npm test
         env:
           #APPLITOOLS_API_KEY: ${{ steps.get-secret.outputs.APPLITOOLS_API_KEY }}
           APPLITOOLS_API_KEY: 'gHlTlTEGygdIPxZkK8eH7tbzORUiErrIY5m9oESOG108w110'
+      
+      # - name: Run Playwright tests
+      #   run: npm test
+      #   env:
+      #     #APPLITOOLS_API_KEY: ${{ steps.get-secret.outputs.APPLITOOLS_API_KEY }}
+      #     APPLITOOLS_API_KEY: 'gHlTlTEGygdIPxZkK8eH7tbzORUiErrIY5m9oESOG108w110'
 
       - uses: actions/upload-artifact@v3
         if: always()
