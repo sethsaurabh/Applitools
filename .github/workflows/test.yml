@@ -20,17 +20,17 @@ jobs:
         with:
           node-version: 16
 
-      - name: Authenticate with Google Cloud
-        uses: google-github-actions/auth@v1
-        with:
-          credentials_json: ${{ secrets.GCP_SA_KEY }}
+      # - name: Authenticate with Google Cloud
+      #   uses: google-github-actions/auth@v1
+      #   with:
+      #     credentials_json: ${{ secrets.GCP_SA_KEY }}
   
-      - name: Retrieve secret from Google Secret Manager
-        id: get-secret
-        uses: google-github-actions/get-secretmanager-secrets@v1
-        with:
-            secrets: |
-              applitools_api_key:projects/370696467361/secrets/applitools_api_key/versions/1
+      # - name: Retrieve secret from Google Secret Manager
+      #   id: get-secret
+      #   uses: google-github-actions/get-secretmanager-secrets@v1
+      #   with:
+      #       secrets: |
+      #         applitools_api_key:projects/370696467361/secrets/applitools_api_key/versions/1
 
       - name: Clean install the project
         run: npm ci
@@ -41,7 +41,8 @@ jobs:
       - name: Run Playwright tests
         run: npm test
         env:
-          APPLITOOLS_API_KEY: ${{ steps.get-secret.outputs.APPLITOOLS_API_KEY }}
+          #APPLITOOLS_API_KEY: ${{ steps.get-secret.outputs.APPLITOOLS_API_KEY }}
+          APPLITOOLS_API_KEY: 'gHlTlTEGygdIPxZkK8eH7tbzORUiErrIY5m9oESOG108w110'
 
       - uses: actions/upload-artifact@v3
         if: always()

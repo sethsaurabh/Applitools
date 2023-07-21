@@ -53,6 +53,7 @@ test.beforeAll(async() => {
 
   // Set the batch for the config.
   Config.setBatch(Batch);
+  
 
   // If running tests on the Ultrafast Grid, configure browsers.
   if (USE_ULTRAFAST_GRID) {
