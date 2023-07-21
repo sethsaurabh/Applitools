@@ -38,6 +38,9 @@ jobs:
       - name: Install Playwright
         run: npx playwright install --with-deps
 
+      - name: Set to use XVfb
+        run:  xvfb-run npx playwright test
+
       - name: Run Playwright tests
         run: npm test
         env:
