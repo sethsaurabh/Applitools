@@ -39,7 +39,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Set to use XVfb
-        run:  xvfb-run npx playwright test
+        run:  xvfb-run npx playwright acme-bank.spec.ts
         env:
           #APPLITOOLS_API_KEY: ${{ steps.get-secret.outputs.APPLITOOLS_API_KEY }}
           APPLITOOLS_API_KEY: 'gHlTlTEGygdIPxZkK8eH7tbzORUiErrIY5m9oESOG108w110'
