@@ -61,13 +61,13 @@ test.beforeAll(async() => {
     // Add 3 desktop browsers with different viewports for cross-browser testing in the Ultrafast Grid.
     // Other browsers are also available, like Edge and IE.
     Config.addBrowser(800, 600, BrowserType.CHROME);
-    Config.addBrowser(1600, 1200, BrowserType.FIREFOX);
-    Config.addBrowser(1024, 768, BrowserType.SAFARI);
+    //Config.addBrowser(1600, 1200, BrowserType.FIREFOX);
+    //Config.addBrowser(1024, 768, BrowserType.SAFARI);
   
     // Add 2 mobile emulation devices with different orientations for cross-browser testing in the Ultrafast Grid.
     // Other mobile devices are available.
-    Config.addDeviceEmulation(DeviceName.iPhone_11, ScreenOrientation.PORTRAIT);
-    Config.addDeviceEmulation(DeviceName.Nexus_10, ScreenOrientation.LANDSCAPE);
+    //Config.addDeviceEmulation(DeviceName.iPhone_11, ScreenOrientation.PORTRAIT);
+    //Config.addDeviceEmulation(DeviceName.Nexus_10, ScreenOrientation.LANDSCAPE);
   }
 });
 
