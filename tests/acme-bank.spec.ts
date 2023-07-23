@@ -19,7 +19,7 @@ import {
 // Settings to control how tests are run.
 // These could be set by environment variables or other input mechanisms.
 // They are hard-coded here to keep the example project simple.
-export const USE_ULTRAFAST_GRID: boolean = true;
+export const USE_ULTRAFAST_GRID: boolean = false;
 
 // Applitools objects to share for all tests
 export let Batch: BatchInfo;
